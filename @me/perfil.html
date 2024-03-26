@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <style>
+                    body {
+                background-color: black;
+            }
+
+        .menu {
+            position: fixed;
+            width: 80%;
+            height: 30px;
+            margin-top: 20px;
+            margin-left: 100px;
+            padding: 20px;
+            background-color: #000000;
+            border-radius: 20px;
+            transition: 0.5s; /* Transição suave para a sombra */
+            display: flex;
+        }
+
+        .menu > h1 {
+            margin-top: 0px;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        span {
+            color: rgb(255, 176, 29);
+        }
+        
+        .shadow {
+            box-shadow: 0px 0px 20px rgba(209, 209, 209, 0.5); /* Adiciona uma sombra suave */
+            border: none;
+        }
+
+        h1 {
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        li {
+            list-style: none;
+            margin-top: 5px;
+            margin-left: 90px;
+            border-radius: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff ;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 10px;
+            padding: 15px;
+            transition: 0.5s;
+        }
+
+        a:hover{
+            background-color: #1b1b1b;
+        }
+
+        /* Estilos para a barra de rolagem */
+    body::-webkit-scrollbar {
+        width: 6px; /* Largura da barra de rolagem */
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: rgb(255, 176, 29); /* Cor do polegar da barra de rolagem */
+        border-radius: 5px; /* Borda arredondada para o polegar */
+    }
+
+    body::-webkit-scrollbar-track {
+        background-color: transparent; /* Cor de fundo da barra de rolagem */
+    }
+    
+    .info {
+        width: 700px;
+        height: 500px;
+        background-color: #131313;
+        margin-top: 0px;
+        margin-left: 250px;
+        border-radius: 15px;
+    }
+
+    .info > img {
+        margin-top: 40px;
+        margin-left: 270px;
+    }
+
+    .info > h1 {
+        margin-top: 30px;
+        margin-left: 235px;
+    }
+        
+    .info > p {
+        color: #fff;
+        margin-left: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }
+
+    button {
+        background-color: rgb(255, 176, 29);
+        color: #fff;
+        border: none;
+        padding: 6px 20px;
+        border-radius: 15px;
+        transition: 0.5s;
+    }
+
+    button:hover {
+        background-color: rgb(228, 156, 23);
+        box-shadow: 0 0 30px rgb(255, 176, 29);
+    }
+
+        /* Estilos para o modal */
+    .modal {
+        display: none; /* Oculta o modal por padrão */
+        position: fixed; /* Permite que o modal flutue sobre o conteúdo da página */
+        z-index: 1; /* Garante que o modal seja exibido na parte superior */
+        left: 0;
+        top: 0;
+        width: 100%; /* Largura total */
+        height: 100%; /* Altura total */
+        overflow: auto; /* Adiciona rolagem quando o conteúdo do modal é longo */
+        background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+        opacity: 0; /* Inicialmente o modal é transparente */
+    transition: opacity 0.3s ease; /* Transição suave para a opacidade */
+    }
+
+    /* Estilos para o conteúdo do modal */
+    .modal-content {
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #2c2c2c; /* Cor de fundo do modal */
+        margin: 15% auto; /* Centraliza o modal verticalmente */
+        padding: 20px;
+        width: 80%; /* Largura do modal */
+        transition: opacity 0.3s ease; /* Transição suave para a opacidade */
+        border-radius: 15px;
+    }
+
+    /* Estilos para o botão de fechar */
+    .close {
+        color: rgb(255, 176, 29);
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: rgb(216, 110, 22);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    </style>
+</head>
+<body>
+    
+    <div class="menu">
+        <h1 id="name" onclick="perfil()"></h1>
+    </div><br><br><br><br><br><br><br>
+    <div class="info">
+      <img src="../img/do-utilizador.png" alt="">
+      <h1 id="info-name"></h1>
+      <p>Informações:</p>
+      <p id="e-mail"></p> 
+      <p id="tell"></p>
+      <p id="password"></p>
+    </div><br><br><br><br>
+
+    <div id="myModal" class="modal">
+        <!-- Conteúdo do modal -->
+        <div class="modal-content">
+          <span class="close" onclick="close()">&times;</span>
+          <p id="senha"></p>
+        </div>
+      </div>
+    <script>
+        
+        window.addEventListener('scroll', function() {
+        var content = document.querySelector('.menu');
+        var scrollPosition = window.scrollY;
+    
+        if (scrollPosition > 4) { // Altere 100 para a posição em que você deseja que a sombra apareça
+            content.classList.add('shadow');
+            content.setAttribute('id');
+        } else {
+            content.classList.remove('shadow');
+            content.removeAttribute('id');
+        }
+    });
+    
+    // Recupera as informações do usuário armazenadas no localStorage
+    var username = localStorage.getItem('username');
+    var email = localStorage.getItem('email');
+    var telefone = localStorage.getItem('telefone');
+    var password = localStorage.getItem('password');
+
+    var modal = document.querySelector('#myModal');
+    var closeModal = document.getElementsByClassName('close')[0];
+    // Seleciona o elemento h1 pelo ID
+    var nameElement = document.getElementById('name');
+    var InfoName = document.getElementById('info-name');
+    var Email = document.getElementById('e-mail');
+    var Telefone = document.getElementById('tell');
+    var Senha = document.getElementById('password');
+    var ShowSenha = document.getElementById('senha');
+
+    ShowSenha.innerHTML = `Sua Senha: <span>${password}</span> <button id="TrocarSenha">Trocar Senha</button>`;
+    Senha.innerHTML = `Senha: <span>•••••••••</span> <button id="senhaButton">Mostrar Senha</button></span>`;
+    Email.innerHTML = `E-mail: <span>${email} <button id="changeEmailButton">Mudar E-mail</button></span>`;
+    Telefone.innerHTML = `Telefone: <span>+55 ${telefone} <button id="changeTelefoneButton">Mudar Telefone</button></span>`;
+
+
+    // Seleciona o botão "Trocar Senha"
+var changePasswordButton = document.querySelector('#TrocarSenha');
+
+// Adiciona um ouvinte de eventos para o botão "Trocar Senha"
+changePasswordButton.addEventListener('click', function() {
+    var newPassword = prompt("Digite a nova senha:"); // Solicita ao usuário que insira a nova senha
+    if (newPassword !== null && newPassword !== "") { // Verifica se o usuário forneceu uma senha válida
+        // Atualiza o valor da senha no localStorage
+        localStorage.setItem('password', newPassword);
+        // Reinicia a página automaticamente após 1 segundo
+        setTimeout(function() {
+            location.reload();
+        }, 1000); // 1000 milissegundos = 1 segundo
+    }
+});
+
+    // Seleciona o elemento do botão "Mudar E-mail"
+var changeEmailButton = document.querySelector('#changeEmailButton');
+
+// Adiciona um ouvinte de eventos para o botão "Mudar E-mail"
+changeEmailButton.addEventListener('click', function() {
+    var newEmail = prompt("Digite o novo e-mail:"); // Solicita ao usuário que insira o novo e-mail
+    if (newEmail !== null && newEmail !== "") { // Verifica se o usuário forneceu um e-mail válido
+        // Atualiza o valor do email no localStorage
+        localStorage.setItem('email', newEmail);
+        setTimeout(function() {
+            location.reload();
+        }, 1000);
+        // Atualiza o conteúdo do elemento HTML com o novo email
+        emailElement.innerHTML = `E-mail: <span>${newEmail} <button id="changeEmailButton">Mudar E-mail</button></span>`;
+    }
+});
+
+// Seleciona o elemento do botão "Mudar Telefone"
+var changeTelefoneButton = document.querySelector('#changeTelefoneButton');
+
+// Adiciona um ouvinte de eventos para o botão "Mudar Telefone"
+changeTelefoneButton.addEventListener('click', function() {
+    var newTelefone = prompt("Digite o novo telefone:"); // Solicita ao usuário que insira o novo telefone
+    if (newTelefone !== null && newTelefone !== "") { // Verifica se o usuário forneceu um telefone válido
+        // Atualiza o valor do telefone no localStorage
+        localStorage.setItem('telefone', newTelefone);
+        setTimeout(function() {
+            location.reload();
+        }, 1000);
+
+        // Atualiza o conteúdo do elemento HTML com o novo telefone
+        telefoneElement.innerHTML = `Telefone: <span>+55 ${newTelefone} <button id="changeTelefoneButton">Mudar Telefone</button></span>`;
+
+    }
+});
+
+        // Adiciona um manipulador de eventos ao botão dentro do elemento Senha
+    document.addEventListener('DOMContentLoaded', function() {
+        var senhaButton = document.querySelector('#senhaButton');
+        senhaButton.addEventListener('click', function() {
+            // Abra o modal desejado aqui
+            // Por exemplo:
+            var modal = document.querySelector('#myModal');
+            modal.style.display = 'block';
+            setTimeout(function() {
+        modal.style.opacity = '1'; // Gradualmente torna o modal visível
+    }, 10);
+        });
+    });
+    
+    InfoName.innerHTML = `${username} <button id="changeNameButton">Mudar Nome</button></span>`;
+    // Seleciona o elemento do botão "Mudar Nome"
+var changeNameButton = document.querySelector('#changeNameButton');
+
+// Adiciona um ouvinte de eventos para o botão "Mudar Nome"
+changeNameButton.addEventListener('click', function() {
+    var newName = prompt("Digite o novo nome:"); // Solicita ao usuário que insira o novo nome
+    if (newName !== null && newName !== "") { // Verifica se o usuário forneceu um nome válido
+        // Atualiza o valor do nome de usuário no localStorage
+        localStorage.setItem('username', newName);
+        // Reinicia a página automaticamente após 1 segundo
+        setTimeout(function() {
+            location.reload();
+        }, 1000); // 1000 milissegundos = 1 segundo
+    }
+});
+
+    // Altera o texto do h1 com HTML
+    nameElement.innerHTML = `Olá <span>${username}</span>, seja bem vindo(a) ao seu <span>Perfil</span>`;
+    
+        // Quando o usuário clicar no elemento de fechar, o modal será fechado
+    closeModal.onclick = function() {
+        modal.style.opacity = '0'; // Gradualmente torna o modal transparente
+        setTimeout(function() {
+            modal.style.display = 'none';
+        }, 300); // Após 300ms (tempo da transição), oculta o modal
+    }
+
+        // Quando o usuário clicar fora do modal, o modal será fechado
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.opacity = '0'; // Gradualmente torna o modal transparente
+            setTimeout(function() {
+                modal.style.display = 'none';
+            }, 300); // Após 300ms (tempo da transição), oculta o modal
+        }
+    }
+
+    function perfil() {
+        window.location.href = '../home.html';
+    }
+    </script>
+    
+</body>
+</html>

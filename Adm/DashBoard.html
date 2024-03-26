@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flash Store</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="DashBoard.html" class="nav-link"><i class="bi bi-columns-gap"></i><span> DashBoard</span></a></li>
+            <li><a href="Clientes.html" class="nav-link"><i class="bi bi-people"></i> <span> Clientes</span></a></li>
+            <li><a href="ScammersAdd.html" class="nav-link"><i class="bi bi-cpu"></i> <span> Scammers</span></a></li>
+            <li><a href="Produtos.html" class="nav-link"><i class="bi bi-shop"></i> <span> Produtos</span></a></li>
+            <li><a href="help.html" class="nav-link" id="help"><i class="bi bi-person-raised-hand"></i> <span>Help?</span></a></li>
+        </ul>
+        <button class="discord-button" disabled id="logado">Logado(a)</button>
+    </div>
+
+
+<!-- O modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <label for="nameInput">Digite seu nome:</label>
+        <input type="text" id="nameInput" required><br>
+        <label for="nameInput">Digite a Senha:</label>
+        <input type="text" id="senhaInput" required>
+        <button onclick="submitName()" id="confirmar">Confirmar</button>
+    </div>
+</div>
+
+<!-- Elemento h1 para exibir o nome -->
+<h1 id="userName">Carregando...</h1>
+<h2 id="descrription">Seja bem vindo(a) ao DashBoard.</h2>
+
+
+<div class="info">
+    <div class="messages">
+        <!--Envie uma mensagem para o WebHook-->
+         <h1>Mensagem:</h1>
+        <form id="messageForm">
+            <label for="message">Digite sua mensagem:</label><br>
+            <input type="text" id="message" name="message"><br>
+            <label for="channel">Escolha o canal:</label><br>
+            <select id="channel">
+              <option value="https://discord.com/api/webhooks/1219751792754032706/hhKDhJcGwQzcQ5g-riS5xOHfLQ52j-gpXahzQL-TsebFp-uzWuN2_Bwl9VMMb4oe8K13">💬﹒chat-geral</option>
+              <option value="https://discord.com/api/webhooks/1219753712382120107/uoeWgjCsQlyXE2O9xX5txpowdpBZHjRyxZN9fot9n6EcBkemuNdt88Y7wOimqb4CbhWw">📣﹒anúncios</option>
+              <!-- Adicione mais opções conforme necessário -->
+            </select><br>
+            <button type="submit">Enviar</button>
+          </form>
+          <br><br>
+        <hr>
+        <br>
+          <h1>Embeds:</h1>
+          <form id="embedForm">
+            <label for="title">Título:</label><br>
+            <input type="text" id="title" name="title"><br>
+            
+            <label for="description">Descrição:</label><br>
+            <input type="text" id="description" name="description"><br>
+            
+            <label for="color">Cor:</label><br>
+            <input type="color" id="color" name="color" value="#FF0000"><br>
+            
+            <label for="field1">Campo 1:</label><br>
+            <input type="text" id="field1" name="field1"><br>
+            
+            <label for="value1">Valor 1:</label><br>
+            <input type="text" id="value1" name="value1"><br>
+            
+            <label for="field2">Campo 2:</label><br>
+            <input type="text" id="field2" name="field2"><br>
+            
+            <label for="value2">Valor 2:</label><br>
+            <input type="text" id="value2" name="value2"><br>
+            
+            <button type="submit">Enviar</button>
+          </form>
+
+          <div class="WebHooks">
+             <h1>WebHooks Ativos:</h1>
+             <div class="webhook1">
+                <img src="_1050ab55-48a1-4845-a9a2-3092afc440db.jpeg" alt="" id="WebHookImg"> 
+                <h3>FLASH STORE WEBSITE: <span>ON-LINE</span></h3>
+                <div class="status"></div>
+             </div><br>
+
+             <div class="webhook1">
+                <img src="_1050ab55-48a1-4845-a9a2-3092afc440db.jpeg" alt="" id="WebHookImg"> 
+                <h3 id="off">WEBSITE BANS: <span>OFF-LINE</span></h3>
+                <div class="status-off"></div>
+             </div>
+             <div class="webhook1">
+                <img src="6892625-discord-logo-icon-editorial-vector-gratis-vetor.jpg" alt="" id="WebHookImg"> 
+                <h3 id="sem">------- ----: <span>SEM WEBHOOK</span></h3>
+                <div class="status-sem"></div>
+             </div>
+             <div class="webhook1">
+                <img src="6892625-discord-logo-icon-editorial-vector-gratis-vetor.jpg" alt="" id="WebHookImg"> 
+                <h3 id="sem">------- ----: <span>SEM WEBHOOK</span></h3>
+                <div class="status-sem"></div>
+             </div>
+             <div class="webhook1">
+                <img src="6892625-discord-logo-icon-editorial-vector-gratis-vetor.jpg" alt="" id="WebHookImg"> 
+                <h3 id="sem">------- ----: <span>SEM WEBHOOK</span></h3>
+                <div class="status-sem"></div>
+             </div>
+             <div class="webhook1">
+                <img src="6892625-discord-logo-icon-editorial-vector-gratis-vetor.jpg" alt="" id="WebHookImg"> 
+                <h3 id="sem">------- ----: <span>SEM WEBHOOK</span></h3>
+                <div class="status-sem"></div>
+             </div>
+             <div class="webhook1">
+                <img src="6892625-discord-logo-icon-editorial-vector-gratis-vetor.jpg" alt="" id="WebHookImg"> 
+                <h3 id="sem">------- ----: <span>SEM WEBHOOK</span></h3>
+                <div class="status-sem"></div>
+             </div>
+          </div>
+</div><br><br><br><br><br><br>
+
+
+<script>
+// Referências aos elementos
+const modal = document.getElementById('myModal');
+const senhaInput = document.getElementById('senhaInput')
+const openModalBtn = document.getElementById('openModalBtn');
+const nameInput = document.getElementById('nameInput');
+const userName = document.getElementById('userName');
+
+// Função para abrir o modal
+function openModal() {
+    modal.style.display = 'block';
+}
+
+// Função para fechar o modal
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+// Função para confirmar o nome e exibi-lo
+function submitName() {
+    const name = nameInput.value.trim();
+    const password = senhaInput.value.trim();
+
+    if (name === '') {
+        alert('Por favor, digite seu nome.');
+        return; // Retorna para interromper a execução da função se o nome não estiver preenchido
+    }
+
+    if (password === '') {
+        alert('Por favor, digite sua senha.');
+        return; // Retorna para interromper a execução da função se a senha não estiver preenchida
+    }
+
+    localStorage.setItem('userName', name); // Armazena o nome em localStorage
+    userName.textContent = 'Olá, ' + name + '!'; // Exibe o nome na página
+    const description = document.getElementById('descrription');
+    description.classList.add('show'); 
+    description.innerHTML = 'Seja bem vindo(a) ao dashboard!'// Adiciona a classe show para exibir o elemento de descrição
+}
+
+// Função para verificar a senha e fechar o modal
+function checkPassword() {
+    const password = senhaInput.value.trim();
+    const name = nameInput.value.trim();
+
+    if (name === '') {
+        alert('Por favor, digite seu nome antes de verificar a senha.');
+        return; // Retorna para interromper a execução da função se o nome não estiver preenchido
+    }
+
+    if (password === '') {
+        alert('Por favor, digite sua senha.');
+        return; // Retorna para interromper a execução da função se a senha não estiver preenchida
+    }
+
+    if (password === 'Fst2114') {
+        closeModal(); // Fecha o modal se a senha for correta
+        location.reload();
+    } else {
+        alert('Senha incorreta. O modal permanecerá aberto.');
+    }
+}
+
+// Verifica se o nome já foi armazenado em localStorage ao carregar a página
+window.onload = function() {
+    const storedName = localStorage.getItem('userName');
+    if (storedName) {
+        userName.textContent = 'Olá, ' + storedName + '!'; // Exibe o nome na página
+        const description = document.getElementById('descrription');
+        description.classList.add('show');
+        description.textContent = 'Seja bem vindo(a) ao DashBoard' // Adiciona a classe show para exibir o elemento de descrição
+    } else {
+        openModal(); // Abre o modal se o nome não estiver armazenado
+    }
+};
+
+// Função para armazenar os dados no localStorage com uma marca de data e hora
+function saveData(data) {
+    const currentDate = new Date();
+    const expirationDate = new Date(currentDate.getTime() + (5 * 24 * 60 * 60 * 1000)); // Adiciona 5 dias à data atual
+    const item = {
+        data: data,
+        expires: expirationDate.getTime() // Armazena o tempo de expiração em milissegundos
+    };
+    localStorage.setItem('userName', JSON.stringify(item));
+}
+
+// Função para verificar se os dados armazenados estão expirados e removê-los, se necessário
+function checkExpiration() {
+    const item = JSON.parse(localStorage.getItem('userName'));
+    if (item && new Date().getTime() > item.expires) {
+        localStorage.removeItem('userName'); // Remove os dados se estiverem expirados
+    }
+}
+
+    
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>

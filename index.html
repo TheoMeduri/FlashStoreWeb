@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="Login">
+        <h1>LOGIN</h1>
+        <form id="loginForm">
+            <input type="text" name="username" placeholder="Usuário, E-mail, Telefone" required><br><br>
+            <input type="password" name="password" placeholder="Senha" required><br><br>
+            <button type="submit">Enviar</button><br><br>
+        </form>
+        <h3>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></h3>
+    </div>
+
+    <div class="not-sucess">
+      <span id="icon"><i class="bi bi-check2-circle"></i> </span>
+      <span class="text">Logado(a) com sucesso!</span>
+    </div>
+    <div class="not-unsucess" style="display: none;"> <!-- Definindo inicialmente como oculto -->
+        <span><i class="bi bi-x-lg"></i></span>
+        <span class="text">Falha ao fazer login!</span>
+    </div>
+
+    <script>
+        // Armazena uma referência para o elemento <div> com a classe "not-sucess"
+        var Sucess = document.querySelector('.not-sucess');
+        var Invalid = document.querySelector('.not-unsucess');
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obtém os valores dos campos de entrada
+            var userInput = document.querySelector('input[name="username"]').value;
+            var passwordInput = document.querySelector('input[name="password"]').value;
+
+            // Recupera as informações do usuário armazenadas no localStorage
+            var username = localStorage.getItem('username');
+            var email = localStorage.getItem('email');
+            var telefone = localStorage.getItem('telefone');
+            var password = localStorage.getItem('password');
+
+            // Verifica se as credenciais de login correspondem às informações armazenadas
+            if ((userInput === username || userInput === email || userInput === telefone) && passwordInput === password) {
+                 // Função para redirecionamento após 5 segundos
+            setTimeout(function() {
+                        window.location.href = "loading.html";
+                    }, 2000); // 5000 milissegundos = 5 segundos
+            Sucess.style.display = 'block';
+            setTimeout(function() {
+            Sucess.classList.add('visible');
+        }, 1000); // 1000 milissegundos = 1 segundo
+            } else {
+            Invalid.style.display = 'block';
+            setTimeout(function() {
+            Invalid.classList.add('errorvisible');
+        }, 1000);// 1000 milissegundos = 1 segundo
+        setTimeout(function() {
+            Invalid.classList.remove('errorvisible')
+        }, 3000);
+        setTimeout(function() {
+            Invalid.style.display = 'none';
+        }, 4000);
+            }
+        });
+
+        
+        
+    </script>
+</body>
+</html>

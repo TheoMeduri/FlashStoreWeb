@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+    .menu {
+        position: fixed;
+        width: 80%;
+        height: 30px;
+        margin-top: 20px;
+        margin-left: 100px;
+        padding: 20px;
+        background-color: #000000;
+        border-radius: 20px;
+        transition: 0.5s; /* Transição suave para a sombra */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu > h1 {
+        margin-top: 15px;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size: 26px;
+        cursor: pointer;
+    }
+
+    span {
+        color: rgb(255, 176, 29);
+    }
+    
+    .shadow {
+        box-shadow: 0px 0px 40px rgba(102, 102, 102, 0.5); /* Adiciona uma sombra suave */
+        border: none;
+    }
+
+    h1 {
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    .left {
+    margin-right: auto;
+}
+
+.right {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.right li {
+    margin-right: 30px;
+    border-radius: 20px;
+}
+
+.right li a {
+    text-decoration: none;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    padding: 15px;
+    transition: 0.5s;
+}
+
+    a:hover{
+        background-color: #1b1b1b;
+    }
+
+    /* Estilos para a barra de rolagem */
+body::-webkit-scrollbar {
+    width: 6px; /* Largura da barra de rolagem */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 176, 29); /* Cor do polegar da barra de rolagem */
+    border-radius: 5px; /* Borda arredondada para o polegar */
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent; /* Cor de fundo da barra de rolagem */
+}
+
+    img {
+        width: 360px;
+        height: 360px;
+        margin-top: 180px;
+        margin-left: 80px;
+    }
+
+    .sobrenos {
+        display: flex;
+    }
+
+    .sobrenos > .txt > h1 {
+        margin-top: 160px;
+        margin-left: 50px;
+    }
+
+    .sobrenos > .txt > p {
+        color: #fff;
+        margin-left: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        text-align: justify;
+    }
+
+    .lojaonline {
+        display: flex;
+    }
+
+    .lojaonline > img {
+        width: 450px;
+        height: 490px;
+        margin-left: 30px;
+        margin-top: 90px;
+    }
+
+    .lojaonline > .txt > h1 {
+        margin-top: 70px;
+        margin-left: 210px;
+    }
+
+    .lojaonline > .txt > .produtoshome > .produto {
+        margin-top: 40px;
+        margin-left: 30px;
+        width: 220px;
+        height: 300px;
+        background-color: #161616;
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .lojaonline > .txt > .produtoshome > .produto > img {
+        width: 120px;
+        height: 120px;
+        margin-top: 0px;
+        padding: 15px;
+        margin-left: 40px;
+    }
+
+    .lojaonline > .txt > .produtoshome> .produto > hr {
+        border-top: 2px solid rgb(255, 176, 29);
+        margin: 20px 0;
+    }
+
+    .lojaonline > .txt > .produtoshome> .produto > h2 {
+        font-size: 20px;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .lojaonline > .txt > .produtoshome >.produto > button {
+        padding: 10px 40px;
+        text-transform: uppercase;
+        background-color: rgb(255, 176, 29);
+        color: #fff;
+        margin-left: 33px;
+        border: none;
+        border-radius: 10px;
+        transition: 0.5s;
+    }
+
+    .lojaonline > .txt > .produtoshome >.produto > button:hover {
+        background-color: rgb(221, 153, 26);
+        box-shadow: 0 0 25px rgb(255, 176, 29),
+                    0 0 50px rgb(255, 176, 29);
+    }
+
+    .lojaonline > .txt > .produtoshome {
+        display: flex;
+        margin-left: 52px;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h1 id="name" onclick="perfil()" class="left"></h1>
+        <ul class="right">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="Scammers.html">Scammers</a></li>
+            <li><a href="Sobre.html">Sobre Nós</a></li>
+        </ul>
+    </div>
+    
+            
+
+            <div class="sobrenos"> 
+                <div class="txt">
+                    <h1><span>Sobre Nós</span></h1>
+                    <p id="Sobre"></p>
+                </div>
+                <img src="./img/Learning-pana.png" alt="Computador">
+            </div>
+            <br><br>
+            
+            <div class="lojaonline">
+                <img src="./img/Ecommerce campaign-rafiki.png" alt="Loja Online">
+                <div class="txt">
+                    <h1>Nossos <span>Produtos</span></h1>
+                    <div class="produtoshome">
+                        <div class="produto">
+                            <img src="./img/nitrotrimensal.png" alt="Produto">
+                            <hr>
+                             <h2>Nitro Trimensal: <span>R$5.50</span></h2>
+                             <button onclick="Comprar()">Comprar</button>
+                          </div>
+                          <div class="produto">
+                              <img src="./img/nitrotrimensal.png" alt="Produto">
+                              <hr>
+                               <h2>Nitro Mensal: <br><span>R$3.50</span></h2>
+                               <button onclick="Comprar()">Comprar</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+        var content = document.querySelector('.menu');
+        var scrollPosition = window.scrollY;
+    
+        if (scrollPosition > 4) { // Altere 100 para a posição em que você deseja que a sombra apareça
+            content.classList.add('shadow');
+            content.setAttribute('id');
+        } else {
+            content.classList.remove('shadow');
+            content.removeAttribute('id');
+        }
+    });
+
+    
+    
+    // Recupera as informações do usuário armazenadas no localStorage
+    var username = localStorage.getItem('username');
+    var email = localStorage.getItem('email');
+    var telefone = localStorage.getItem('telefone');
+    var password = localStorage.getItem('password');
+
+    // Seleciona o elemento h1 pelo ID
+    var nameElement = document.getElementById('name');
+    var SobreNos = document.getElementById('Sobre');
+    // Altera o texto do h1 com HTML
+    nameElement.innerHTML = `Olá, <span>${username}</span>`;
+    SobreNos.innerHTML = `Olá <span>${username}</span>, bem-vindo à nossa loja online! Aqui você encontrará uma variedade de produtos de qualidade para atender às suas necessidades. Estamos comprometidos em fornecer a você a melhor experiência de compra possível, e é por isso que investimos pesadamente em segurança. <span>Seus dados são criptografados em nosso servidor para garantir total privacidade e proteção.</span> <br> <br>
+
+Nossa equipe dedicada trabalha incansavelmente para garantir que cada transação seja <span>segura e suave.</span> Estamos sempre disponíveis para <span>ajudar e responder</span> a quaisquer perguntas que você possa ter. Se surgir alguma dúvida ou preocupação durante sua navegação, <span>não hesite em nos contatar.</span>`;
+    
+     function perfil() {
+        window.location.href = './@me/perfil.html'
+     }
+    </script>
+</body>
+</html>
